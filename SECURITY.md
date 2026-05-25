@@ -1,6 +1,8 @@
 # Security Policy
 
-AgentGuard is a local static scanner. It does not send repository contents, file names, findings, or environment values to any remote service.
+AgentGuard is a local static scanner by default. It does not send repository contents, file names, findings, or environment values to any remote service when you run the normal `agentguard scan` command.
+
+The optional `agentguard scan --explain` mode uses Groq to generate remediation guidance. That mode requires `GROQ_API_KEY` and sends finding details, including matched snippets, to Groq.
 
 ## Reporting security issues
 

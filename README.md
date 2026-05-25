@@ -16,6 +16,8 @@ agentguard scan .
 
 No network calls. No API keys. No telemetry.
 
+Optional Groq-powered explanations are available with `--explain`. That mode requires `GROQ_API_KEY` and sends only finding details to Groq.
+
 ## Install
 
 From a local checkout:
@@ -51,7 +53,7 @@ MED   AGENT_SKIP_VALIDATION  CLAUDE.md:7
 ## CLI
 
 ```bash
-agentguard scan [PATH] [--json] [--fail-on low|medium|high|critical]
+agentguard scan [PATH] [--json] [--explain] [--fail-on low|medium|high|critical]
 ```
 
 Examples:
@@ -61,6 +63,17 @@ agentguard scan .
 agentguard scan . --json
 agentguard scan . --fail-on high
 ```
+
+Optional AI explanations:
+
+```bash
+export GROQ_API_KEY="your_key_here"
+agentguard scan . --explain
+```
+
+The default scanner does not require `GROQ_API_KEY`. Only `--explain` makes a network request.
+
+For local development, you can copy `.env.example` to `.env` and load it with your shell or tooling. AgentGuard does not read `.env` files directly; it reads `GROQ_API_KEY` from the process environment.
 
 Exit codes:
 
